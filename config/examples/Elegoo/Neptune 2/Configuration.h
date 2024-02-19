@@ -44,7 +44,7 @@
  * Custom switches (to avoid multiplying configurations).
  * See README.md for details.
  */
-//#define IS_BOARD_1_3            // Enable for board v1.3
+#define IS_BOARD_1_3            // Enable for board v1.3
 //#define IS_2D                   // Enable for the Neptune 2d (Dual extruder)
 //#define IS_BMG                  // Enable for installed BMG-like extruder
 //#define USB_MOD                 // Enable if you've applied the Native USB mods (see README.md)
@@ -74,7 +74,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(just-trey, EvilGremlin)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(precurse, just-trey, EvilGremlin)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -720,9 +720,9 @@
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
     // Tuned by the author. Tune your machine with M303.
-    #define DEFAULT_Kp  25.47
-    #define DEFAULT_Ki   2.11
-    #define DEFAULT_Kd  76.90
+    #define DEFAULT_Kp  29.10
+    #define DEFAULT_Ki   2.39
+    #define DEFAULT_Kd  88.48
   #endif
 #else
   #define BANG_MAX 255    // Limit hotend current while in bang-bang mode; 255=full current
@@ -811,9 +811,9 @@
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
 
   // Tuned by the author. Tune your machine with M303.
-  #define DEFAULT_bedKp 31.30
-  #define DEFAULT_bedKi 6.02
-  #define DEFAULT_bedKd 108.50
+  #define DEFAULT_bedKp 96.94
+  #define DEFAULT_bedKi 18.93
+  #define DEFAULT_bedKd 330.89
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #else
@@ -1247,7 +1247,7 @@
   #ifdef IS_2D
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95, 95 }
   #else
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.93, 80.44, 407.84, 142.55 }
   #endif
 #endif
 
@@ -1360,7 +1360,7 @@
  * The probe replaces the Z-MIN endstop and is used for Z homing.
  * (Automatically enables USE_PROBE_FOR_Z_HOMING.)
  */
-//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 // Force the use of the probe for Z-axis homing
 //#define USE_PROBE_FOR_Z_HOMING
@@ -1417,7 +1417,7 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-//#define BLTOUCH
+#define BLTOUCH
 
 /**
  * MagLev V4 probe by MDD
@@ -1569,7 +1569,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 32.55, 3, 0 }
+#define NOZZLE_TO_PROBE_OFFSET { 50, -5, -1.40 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1629,7 +1629,7 @@
  * A total of 2 does fast/slow probes with a weighted average.
  * A total of 3 or more adds more slow probes, taking the average.
  */
-//#define MULTIPLE_PROBING 2
+#define MULTIPLE_PROBING 2
 //#define EXTRA_PROBING    1
 
 /**
@@ -1684,7 +1684,7 @@
 //#define DELAY_BEFORE_PROBING 200  // (ms) To prevent vibrations from triggering piezo sensors
 
 // Require minimum nozzle and/or bed temperature for probing
-//#define PREHEAT_BEFORE_PROBING
+#define PREHEAT_BEFORE_PROBING
 #if ENABLED(PREHEAT_BEFORE_PROBING)
   #define PROBING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
   #define PROBING_BED_TEMP     50
@@ -1986,8 +1986,8 @@
  * these options to restore the prior leveling state or to always enable
  * leveling immediately after G28.
  */
-#define RESTORE_LEVELING_AFTER_G28
-//#define ENABLE_LEVELING_AFTER_G28
+//#define RESTORE_LEVELING_AFTER_G28
+#define ENABLE_LEVELING_AFTER_G28
 
 /**
  * Auto-leveling needs preheating
@@ -2041,9 +2041,9 @@
   /**
    * Enable the G26 Mesh Validation Pattern tool.
    */
-  //#define G26_MESH_VALIDATION
+  #define G26_MESH_VALIDATION
   #if ENABLED(G26_MESH_VALIDATION)
-    #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
+    #define MESH_TEST_NOZZLE_SIZE    0.6  // (mm) Diameter of primary nozzle.
     #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for G26.
     #define MESH_TEST_HOTEND_TEMP  205    // (°C) Default nozzle temperature for G26.
     #define MESH_TEST_BED_TEMP      60    // (°C) Default bed temperature for G26.
